@@ -7,11 +7,11 @@ Take note that some pins on each port are multifunction so care shall be taken i
 It can be program like the Arduino UNO.
 
 ## Definition:
--BOARD PIN - The pin number labeled on the physical Trinket Pro board.
--PBx       - The chip designated port pin number eg. Port B there are port pins PB0, PB1, PB2...PB7
--PCINTx    - The Pin Change Interrupt Number corresponding to Port's pin
--PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, PORT C as PCIE1, PORT D as PCIE2
--CHIPx     - Pin number as labelled on ATMEGA328 Chip
+- BOARD PIN - The pin number labeled on the physical Trinket Pro board.
+- PBx       - The chip designated port pin number eg. Port B there are port pins PB0, PB1, PB2...PB7
+- PCINTx    - The Pin Change Interrupt Number corresponding to Port's pin
+- PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, PORT C as PCIE1, PORT D as PCIE2
+- CHIPx     - Pin number as labelled on ATMEGA328 Chip
 
 ## INTERRUPT PIN TABLE
 ```c++
