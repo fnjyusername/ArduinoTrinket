@@ -21,7 +21,7 @@ CHIPx     - Pin number as labelled on ATMEGA328 Chip
     11        11    PB3        PCINT3    B00001000          SPI MOSI
     12        12    PB4        PCINT4    B00010000          SPI MISO
     13        13    PB5        PCINT5    B00100000          SPI SCK, LED 13       Only 6 pins for PORT B
---
+
   PIN CHANGE INTERRUPT PORT C PCIE1
   BOARD     CHIP    PORT    PCIE1/PSMSK1  BIT              Other Function          NOTE
   14/A0       23     PC0        PCINT8    B00000001          Free                  Pin 14 as Digital A0(Analog)
@@ -42,5 +42,3 @@ CHIPx     - Pin number as labelled on ATMEGA328 Chip
      5        11    PD5        PCINT21    B00100000         Free                  -
      6        12    PD6        PCINT22    B01000000         Free                  -
      x        13    PD7        PCINT23    B10000000         N/A                   Not 
-     
-     
