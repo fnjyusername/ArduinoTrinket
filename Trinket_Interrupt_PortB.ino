@@ -27,10 +27,10 @@ void setup(){ Serial.begin(115200);
 //ARDUINO PRO TRINKET 328
 //TIMSK0 &= ~_BV(TOIE0);                                       //Disable Timer0, for gitter free against interrupt.
   PCICR  |= (1 << PCIE0);                                      //Set PCIE0 to enable PCMSK0 scan.
-  PCMSK0 |= (1 << PCINT1);                                     //Set PCINT1 (digital input 8)to trigger an interrupt on state change.
-  PCMSK0 |= (1 << PCINT2);                                     //Set PCINT2 (digital input 9) to trigger an interrupt on state change.
-  PCMSK0 |= (1 << PCINT3);                                     //Set PCINT3 (digital input 10)to trigger an interrupt on state change.
-  PCMSK0 |= (1 << PCINT4);                                     //Set PCINT4 (digital input 11)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT1);                                     //Set PCINT1 (digital input 9)to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT2);                                     //Set PCINT2 (digital input 10) to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT3);                                     //Set PCINT3 (digital input 11)to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT4);                                     //Set PCINT4 (digital input 12)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Main program loop
@@ -46,7 +46,7 @@ delay(20);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//This routine is called every time input 8, 9, 10 or 11 changed state
+//This routine is called every time input  9, 10 , 11 or 12 changed state
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ISR(PCINT0_vect){
   now = micros();
