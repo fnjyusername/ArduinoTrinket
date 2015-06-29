@@ -1,5 +1,4 @@
-# ArduinoTrinket PRO (3v/12Mhz)
-# Applicable to (5v/16Mhz) 
+# ArduinoTrinket PRO (3v/12Mhz or 5v/16Mhz)
 
 On Trinket PRO (5v or 3v Logic), there are 3 Ports (Port B, C, and D) which can be utilized for pin change interrupt.
 Take note that some pins on each port are multifunction so care shall be taken in using a multifunction pin. Example is the physical board's pin 10, 11, 12, and 13 can be use as SPI pins.
