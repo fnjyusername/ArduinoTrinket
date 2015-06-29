@@ -6,7 +6,7 @@ Take note that some pins on each port are multifunction so care shall be taken i
 
 It can be program like the Arduino UNO.
 
-Definition:
+## Definition:
 BOARD PIN - The pin number labeled on the physical Trinket Pro board.
 PBx       - The chip designated port pin number eg. Port B there are port pins PB0, PB1, PB2...PB7
 PCINTx    - The Pin Change Interrupt Number corresponding to Port's pin
