@@ -5,7 +5,7 @@ Take note that some pins on each port are multifunction so care shall be taken i
 
 Definition:
 BOARD PIN - The pin number labeled on the physical Trinket Pro board.
-PBx       - The chip designated port pin number eg. Port B there are pins PB0, PB1, PB2...PB7
+PBx       - The chip designated port pin number eg. Port B there are port pins PB0, PB1, PB2...PB7
 PCIBTx    - The Pin Change Interrupt Number corresponding to Port's pin
 PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, PORT C as PCIE1, PORT D as PCIE2
 
@@ -31,4 +31,12 @@ PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, POR
     
     
   PIN CHANGE INTERRUPT PORT D PCIE2
-  
+  BOARD    PCINT1  PORT    PCIE1/PSMSK1  BIT              Other Function          NOTE
+     0        0     PC0        PCINT0    B00000001          RX0                   Serial RX
+     1        1     PC1        PCINT1    B00000010          TX0                   Serial TX
+     X        2     PC2        PCINT2    B00000100          N/A                   Not Available
+     3        3     PC3        PCINT3    B00001000          INT1                  Interrupt 1
+     4        4     PC4        PCINT4    B00010000          Free                  -
+     5        5     PC5        PCINT5    B00100000          Free                  -
+     6        6     PC6        PCINT6    B01000000          Free                  -
+     x        7     PC7        PCINT7    B10000000          N/A                   Not Available
