@@ -27,12 +27,12 @@ void setup(){ Serial.begin(115200);
  pinMode(16, INPUT); digitalWrite(16, HIGH);
  pinMode(17, INPUT); digitalWrite(17, HIGH);
 //ARDUINO PRO TRINKET 328
-//TIMSK0 &= ~_BV(TOIE0);                                       //Disable Timer0, for gitter free against interrupt.
+//TIMSK1 &= ~_BV(TOIE1);                                       //Disable Timer0, for gitter free against interrupt.
   PCICR  |= (1 << PCIE1);                                      //Set PCIE0 to enable PCMSK0 scan.
   PCMSK1 |= (1 << PCINT8);                                     //Set PCINT3 (digital input 11)to trigger an interrupt on state change.
   PCMSK1 |= (1 << PCINT9);                                     //Set PCINT4 (digital input 8) to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT10);                                     //Set PCINT5 (digital input 9)to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT11);                                     //Set PCINT6 (digital input 10)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
+  PCMSK1 |= (1 << PCINT10);                                    //Set PCINT5 (digital input 9)to trigger an interrupt on state change.
+  PCMSK1 |= (1 << PCINT11);                                    //Set PCINT6 (digital input 10)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Main program loop
@@ -40,10 +40,10 @@ void setup(){ Serial.begin(115200);
 void loop()
 {
 /*  */
-Serial.print(":");Serial.print(rcPin09);
-Serial.print(";");Serial.print(rcPin10);
-Serial.print("<");Serial.print(rcPin11);
-Serial.print("=");Serial.println(rcPin12); 
+Serial.print(":");Serial.print(rcPin14);
+Serial.print(";");Serial.print(rcPin15);
+Serial.print("<");Serial.print(rcPin16);
+Serial.print("=");Serial.println(rcPin17); 
 delay(20);
 }
 
