@@ -31,3 +31,5 @@ PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, POR
     A7        7     PC7        PCINT7    B10000000          Free                  -
     
     
+  PIN CHANGE INTERRUPT PORT D PCIE2
+  
