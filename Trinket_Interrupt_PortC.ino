@@ -1,4 +1,6 @@
 /* 
+USE Analog pin A0, A1, A2, A3 belongs to Port C to received pin change Interrupt  under PCIE1/PSMSK1 
+
   PIN CHANGE INTERRUPT PORT C PCIE1
   BOARD     CHIP    PORT    PCIE1/PSMSK1  BIT              Other Function          NOTE
   14/A0       23     PC0        PCINT8    B00000001          Free                  Pin 14 as Digital A0(Analog)
