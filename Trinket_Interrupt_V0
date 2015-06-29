@@ -1,10 +1,18 @@
+/* 
+  PIN CHANGE INTERRUPT PORT B PCIE0
+  BOARD    PCINT0  PORT    PCIE0/PSMSK0  BIT
+    09        8     PB1        PCINT1    B00000010
+    10        9     PB2        PCINT2    B00000100
+    11        10    PB3        PCINT3    B00001000
+    12        11    PB4        PCINT4    B00010000
+*/
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Declaring Variables
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-byte rcPin03_prev, rcPin04_prev, rcPin05_prev, rcPin06_prev;
-int rcPin03, rcPin04, rcPin05, rcPin06;
-unsigned long timer1, timer2, timer3, timer4, now;
+int rcPin09_prev, rcPin10_prev, rcPin11_prev, rcPin12_prev;
+int rcPin09, rcPin10, rcPin11, rcPin12;
+volatile unsigned long timer1, timer2, timer3, timer4, now;
 byte highByte, lowByte;
 int led = 13;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -12,41 +20,29 @@ int led = 13;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void setup(){ Serial.begin(115200);
  pinMode(led, OUTPUT);
- pinMode(9, INPUT);digitalWrite(9, HIGH);
+ pinMode(9, INPUT); digitalWrite(9, HIGH);
  pinMode(10, INPUT);digitalWrite(10, HIGH);
  pinMode(11, INPUT);digitalWrite(11, HIGH);
- pinMode(12, INPUT);digitalWrite(12, HIGH);
-//ARDUINO PRO TRINKET 328  
-  PCICR  |= (1 << PCIE1);                                    //Set PCIE0 to enable PCMSK0 scan.
-  PCMSK1 |= (1 << PCINT0);                                   //Set PCINT0 (digital input RXL/SS) to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT1);                                   //Set PCINT1 (digital input SCK)to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT2);                                   //Set PCINT2 (digital input MISO)to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT3);                                   //Set PCINT3 (digital input 11)to trigger an interrupt on state change.
-//  PCMSK1 |= (1 << PCINT4);                                 //Set PCINT4 (digital input 8) to trigger an interrupt on state change.
-//  PCMSK1 |= (1 << PCINT5);                                 //Set PCINT5 (digital input 9)to trigger an interrupt on state change.
-//  PCMSK1 |= (1 << PCINT6);                                 //Set PCINT6 (digital input 10)to trigger an interrupt on state change.
-//  PCMSK0 |= (1 << PCINT7);                                 //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
+ pinMode(12, INPUT);digitalWrite(11, HIGH);
+//ARDUINO PRO TRINKET 328
+//TIMSK0 &= ~_BV(TOIE0);                                       //Disable Timer0, for gitter free against interrupt.
+  PCICR  |= (1 << PCIE0);                                      //Set PCIE0 to enable PCMSK0 scan.
+  PCMSK0 |= (1 << PCINT1);                                     //Set PCINT3 (digital input 11)to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT2);                                     //Set PCINT4 (digital input 8) to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT3);                                     //Set PCINT5 (digital input 9)to trigger an interrupt on state change.
+  PCMSK0 |= (1 << PCINT4);                                     //Set PCINT6 (digital input 10)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Main program loop
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void loop()
 {
-    //Serial.print(':'); //(:) is 58 AILERON
-    //Serial.print(rcPin03);
-    //Serial.print(';'); //(;) is 59 ELEVATOR           
-    //Serial.print(rcPin04);            
-    //Serial.print('<'); //(<) is 60 THROTTLE  
-    //Serial.print(rcPin05);          
-    //Serial.print('='); //(<) is 61 RUDDER
-    //Serial.print(rcPin06);
-    
-    
-    Serial.print(rcPin03); Serial.print("\t"); 
-    Serial.print(rcPin04); Serial.print("\t"); 
-    Serial.print(rcPin05); Serial.print("\t");  
-    Serial.print(rcPin06); Serial.print("\t");   
-    Serial.println(); delay(20);       
+/*  */
+Serial.print(":");Serial.print(rcPin09);
+Serial.print(";");Serial.print(rcPin10);
+Serial.print("<");Serial.print(rcPin11);
+Serial.print("=");Serial.println(rcPin12); 
+delay(20);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -55,50 +51,50 @@ void loop()
 ISR(PCINT0_vect){
   now = micros();
   //Channel 1==AIL  PORT PB3=====================================
-  if(PINB & B00000001){                                      //Is input 3 high? 
-    if(rcPin03_prev == 0){                                   //Input 3 changed from 0 to 1
-      rcPin03_prev = 1;                                      //Remember current input state
+  if(PINB & B00000010){                                      //Is input 3 high? 
+    if(rcPin09_prev == 0){                                   //Input 3 changed from 0 to 1
+      rcPin09_prev = 1;                                      //Remember current input state
       timer1 = now;                                          //Set timer1 to current_time
     }
   }
-  else if(rcPin03_prev == 1){                                //Input 3 is not high and changed from 1 to 0
-    rcPin03_prev = 0;                                        //Remember current input state
-    rcPin03 = now - timer1; //Serial.println(8);             //Channel 1 is current_time - timer_1
+  else if(rcPin09_prev == 1){                                //Input 3 is not high and changed from 1 to 0
+    rcPin09_prev = 0;                                        //Remember current input state
+    rcPin09 = now - timer1;                                  //Channel 1 is current_time - timer_1
   }
   //Channel 2==ELE  PORT PB4====================================
-  if(PINB & B00000010 ){                                     //Is input 4 high?
-    if(rcPin04_prev == 0){                                   //Input 4 changed from 0 to 1
-      rcPin04_prev = 1;                                      //Remember current input state
+  if(PINB & B00000100 ){                                     //Is input 4 high?
+    if(rcPin10_prev == 0){                                   //Input 4 changed from 0 to 1
+      rcPin10_prev = 1;                                      //Remember current input state
       timer2 = now;                                          //Set timer2 to current_time
     }
   }
-  else if(rcPin04_prev == 1){                                //Input 4 is not high and changed from 1 to 0
-    rcPin04_prev = 0;                                        //Remember current input state
-    rcPin04 = now - timer2; //Serial.println(9);             //Channel 2 is current_time - timer2
+  else if(rcPin10_prev == 1){                                //Input 4 is not high and changed from 1 to 0
+    rcPin10_prev = 0;                                        //Remember current input state
+    rcPin10 = now - timer2;                                  //Channel 2 is current_time - timer2
   }
   //Channel 3==THR  PORT PB5====================================
-  if(PINB & B00000100 ){                                     //Is input 5 high?
-    if(rcPin05_prev == 0){                                   //Input 5 changed from 0 to 1
-      rcPin05_prev = 1;                                      //Remember current input state
-      timer3 = now;                                          //Set timer3 to current_time
+  if(PINB & B00001000 ){                                     //Is input 5 high?
+    if(rcPin11_prev == 0){                                   //Input 5 changed from 0 to 1
+      rcPin11_prev = 1;                                      //Remember current input state
+      timer3 = now; //Serial.println(rcPin11);              //Set timer3 to current_time
     }
-  }
-  else if(rcPin05_prev == 1){                                //Input 5 is not high and changed from 1 to 0
-    rcPin05_prev = 0;                                        //Remember current input state
-    rcPin05 = now - timer3;  //Serial.println(10);           //Channel 3 is current_time - timer3
+  } 
+  else if(rcPin11_prev == 1){                                //Input 5 is not high and changed from 1 to 0
+    rcPin11_prev = 0;                                        //Remember current input state
+    rcPin11 = now - timer3;                                  //Channel 3 is current_time - timer3
 
   }
   //Channel 4==RUD  PORT PB6====================================
-  if(PINB & B00001000 ){                                     //Is input 6 high?
-    if(rcPin06_prev == 0){                                   //Input 6 changed from 0 to 1
-      rcPin06_prev = 1;                                      //Remember current input state
+  if(PINB & B00010000 ){                                     //Is input 6 high?
+    if(rcPin12_prev == 0){                                   //Input 6 changed from 0 to 1
+      rcPin12_prev = 1;                                      //Remember current input state
       timer4 = now;                                          //Set timer4 to current_time
     }
   }
-  else if(rcPin06_prev == 1){                                //Input 6 is not high and changed from 1 to 0
-    rcPin06_prev = 0;                                        //Remember current input state
-    rcPin06 = now - timer4; //Serial.println(11);            //Channel 4 is current_time - timer4
+  else if(rcPin12_prev == 1){                                //Input 6 is not high and changed from 1 to 0
+    rcPin12_prev = 0;                                        //Remember current input state
+    rcPin12 = now - timer4;                                  //Channel 4 is current_time - timer4
   }
 }
 
-Enter file contents here
+
