@@ -21,12 +21,12 @@ CHIPx     - Pin number as labelled on ATMEGA328 Chip
 
   PIN CHANGE INTERRUPT PORT C PCIE1
   BOARD     CHIP    PORT    PCIE1/PSMSK1  BIT              Other Function          NOTE
-    A0       23     PC0        PCINT8    B00000001          Free                  -
-    A1       24     PC1        PCINT9    B00000010          Free                  -
-    A2       25     PC2        PCINT10   B00000100          Free                  -
-    A3       26     PC3        PCINT11   B00001000          Free
-    A4       27     PC4        PCINT12   B00010000          I2C SDA               Use one function at a time
-    A5       28     PC5        PCINT13   B00100000          I2C SCL               Use one function at a time
+  14/A0       23     PC0        PCINT8    B00000001          Free                  Pin 14 as Digital A0(Analog)
+  15/A1       24     PC1        PCINT9    B00000010          Free                  Pin 15 as Digital A1(Analog)
+  16/A2       25     PC2        PCINT10   B00000100          Free                  Pin 16 as Digital A2(Analog)
+  17/A3       26     PC3        PCINT11   B00001000          Free                  Pin 17 as Digital A3(Analog)
+  18/A4       27     PC4        PCINT12   B00010000          I2C SDA               Pin 18 as Digital A4(Analog) or I2C
+  19/A5       28     PC5        PCINT13   B00100000          I2C SCL               Pin 19 as Digital A5(Analog) or I2C
 
     
   PIN CHANGE INTERRUPT PORT D PCIE2
@@ -38,6 +38,6 @@ CHIPx     - Pin number as labelled on ATMEGA328 Chip
      4        6     PD4        PCINT20    B00010000         Free                  -
      5        11    PD5        PCINT21    B00100000         Free                  -
      6        12    PD6        PCINT22    B01000000         Free                  -
-     x        13    PD7       PCINT23     B10000000         N/A                   Not 
+     x        13    PD7        PCINT23    B10000000         N/A                   Not 
      
      
