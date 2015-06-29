@@ -26,8 +26,9 @@ PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, POR
     A3        3     PC3        PCINT11   B00001000          Free
     A4        4     PC4        PCINT12   B00010000          I2C SDA               Use one function at a time
     A5        5     PC5        PCINT13   B00100000          I2C SCL               Use one function at a time
-    A6        6     PC0        PCINT8    B01000000          Free                  Duplicate of A0
-    A7        7     PC1        PCINT9    B10000000          Free                  Duplicate of A1
+
+    A6        6     PC0        PCINT8    B00000001          Free                  Duplicate of A0
+    A7        7     PC1        PCINT9    B00000010          Free                  Duplicate of A1
     
     
   PIN CHANGE INTERRUPT PORT D PCIE2
