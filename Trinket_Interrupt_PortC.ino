@@ -30,11 +30,11 @@ void setup(){ Serial.begin(115200);
  pinMode(17, INPUT); digitalWrite(17, HIGH);
 //ARDUINO PRO TRINKET 328
 //TIMSK1 &= ~_BV(TOIE1);                                       //Disable Timer0, for gitter free against interrupt.
-  PCICR  |= (1 << PCIE1);                                      //Set PCIE0 to enable PCMSK0 scan.
-  PCMSK1 |= (1 << PCINT8);                                     //Set PCINT3 (digital input 11)to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT9);                                     //Set PCINT4 (digital input 8) to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT10);                                    //Set PCINT5 (digital input 9)to trigger an interrupt on state change.
-  PCMSK1 |= (1 << PCINT11);                                    //Set PCINT6 (digital input 10)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
+  PCICR  |= (1 << PCIE1);                                      //Set PCIE1 to enable PCMSK0 scan.
+  PCMSK1 |= (1 << PCINT8);                                     //Set PCINT8  (digital input 14)to trigger an interrupt on state change.
+  PCMSK1 |= (1 << PCINT9);                                     //Set PCINT9  (digital input 15) to trigger an interrupt on state change.
+  PCMSK1 |= (1 << PCINT10);                                    //Set PCINT10 (digital input 16)to trigger an interrupt on state change.
+  PCMSK1 |= (1 << PCINT11);                                    //Set PCINT11 (digital input 17)to trigger an interrupt on state change.                                   //Set PCINT7 (digital input 11)to trigger an interrupt on state change.
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Main program loop
