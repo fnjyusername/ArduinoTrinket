@@ -12,7 +12,7 @@ PBx       - The chip designated port pin number eg. Port B there are port pins P
 PCINTx    - The Pin Change Interrupt Number corresponding to Port's pin
 PCIEx     - Pin change interrupt number for the port...i.e. PORT B as PCIE0, PORT C as PCIE1, PORT D as PCIE2
 CHIPx     - Pin number as labelled on ATMEGA328 Chip
-
+--
   PIN CHANGE INTERRUPT PORT B PCIE0
   BOARD     CHIP    PORT    PCIE0/PSMSK0  BIT              Other Function          NOTE
     08        8     PB0        PCINT0    B00000001          Free                  -
@@ -21,7 +21,7 @@ CHIPx     - Pin number as labelled on ATMEGA328 Chip
     11        11    PB3        PCINT3    B00001000          SPI MOSI
     12        12    PB4        PCINT4    B00010000          SPI MISO
     13        13    PB5        PCINT5    B00100000          SPI SCK, LED 13       Only 6 pins for PORT B
-
+--
   PIN CHANGE INTERRUPT PORT C PCIE1
   BOARD     CHIP    PORT    PCIE1/PSMSK1  BIT              Other Function          NOTE
   14/A0       23     PC0        PCINT8    B00000001          Free                  Pin 14 as Digital A0(Analog)
